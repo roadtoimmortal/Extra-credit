@@ -103,7 +103,7 @@
       height: 100vh;
       display: flex;
       align-items: center;
-      background-image: linear-gradient(rgba(28, 37, 65, 0.8), rgba(28, 37, 65, 0.8)), url('/api/placeholder/1200/800');
+      background-image: linear-gradient(rgba(28, 37, 65, 0.8), rgba(28, 37, 65, 0.8)), url('https://www.resonantlife.net/wp-content/uploads/2023/05/podcast-hero.jpg');
       background-size: cover;
       background-position: center;
       color: white;
@@ -326,68 +326,6 @@
       color: #ccc;
     }
     
-    /* About Section */
-    #about {
-      background-color: white;
-    }
-    
-    .about-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-    }
-    
-    .about-image {
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    
-    .about-text h3 {
-      color: var(--primary);
-      margin-bottom: 1rem;
-      font-size: 1.8rem;
-    }
-    
-    /* Blog Section */
-    #blog {
-      background-color: var(--light);
-    }
-    
-    .blog-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 2rem;
-    }
-    
-    .blog-card {
-      background-color: white;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
-    }
-    
-    .blog-card:hover {
-      transform: translateY(-10px);
-    }
-    
-    .blog-img {
-      height: 200px;
-      background-size: cover;
-      background-position: center;
-    }
-    
-    .blog-content {
-      padding: 1.5rem;
-    }
-    
-    .blog-content h3 {
-      margin-bottom: 0.5rem;
-      color: var(--primary);
-    }
-    
     @media (max-width: 768px) {
       .navbar {
         flex-direction: column;
@@ -426,14 +364,10 @@
       .hero h1 {
         font-size: 2.5rem;
       }
-      
-      .about-content {
-        grid-template-columns: 1fr;
-      }
     }
     
     @media (max-width: 576px) {
-      .episodes-grid, .blog-grid {
+      .episodes-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -467,27 +401,6 @@
       </div>
     </section>
 
-    <section id="about">
-      <div class="container">
-        <div class="section-title">
-          <h2>About the Podcast</h2>
-          <p>Discover the journey behind A Resonant Life</p>
-        </div>
-        
-        <div class="about-content">
-          <div class="about-image">
-            <img src="/api/placeholder/600/400" alt="About A Resonant Life" width="100%">
-          </div>
-          <div class="about-text">
-            <h3>Our Mission</h3>
-            <p>A Resonant Life podcast is dedicated to sharing Buddhist principles and life coaching insights to help you discover your authentic self and create a life that resonates with your true purpose.</p>
-            <p>Through thoughtful discussions, practical exercises, and deep explorations of Buddhist concepts, we aim to provide guidance for navigating life's challenges and finding joy in the present moment.</p>
-            <p>Join us on this journey of self-discovery and growth as we explore what it means to live a truly resonant life.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section id="episodes" class="latest-episodes">
       <div class="container">
         <div class="section-title">
@@ -497,88 +410,28 @@
         
         <div class="episodes-grid">
           <div class="episode-card">
-            <div class="episode-img" style="background-image: url('/api/placeholder/350/200');"></div>
+            <div class="episode-img" style="background-image: url('https://img.youtube.com/vi/w1MQNPm83uE/0.jpg');"></div>
             <div class="episode-content">
               <h3>Revised Terms and Conditions of A Resonant Life</h3>
               <div class="episode-meta">
                 <span><i class="fas fa-calendar"></i> June 10, 2023</span>
                 <span><i class="fas fa-clock"></i> 45 min</span>
               </div>
-              <p>We've often underpinned a lot of our previous discussions and insights with the idea of embracing others without condition, without distinction. But what does that mean? Today we'll turn that stone over and try to better understand it as well as learn an exercise that will help us to rewire our hearts and brains to actually become better and engaging with others without condition or distinction.</p>
-              <a href="#" class="btn">Listen Now</a>
+              <p>We’ve often underpinned a lot of our previous discussions and insights with the idea of embracing others without condition, without distinction. But what does that mean? Today we’ll turn that stone over and try to better understand it as well as learn an exercise that will help us to rewire our hearts and brains to actually become better and engaging with others without condition or distinction.</p>
+              <a href="https://www.youtube.com/watch?v=w1MQNPm83uE" class="btn">Listen Now</a>
             </div>
           </div>
           
           <div class="episode-card">
-            <div class="episode-img" style="background-image: url('/api/placeholder/350/200');"></div>
+            <div class="episode-img" style="background-image: url('https://img.youtube.com/vi/mAHM2Oxq-A8/0.jpg');"></div>
             <div class="episode-content">
               <h3>Zip the Lip and Unzip the Heart</h3>
               <div class="episode-meta">
                 <span><i class="fas fa-calendar"></i> May 20, 2023</span>
                 <span><i class="fas fa-clock"></i> 50 min</span>
               </div>
-              <p>Buddhist concepts, doctrine and traditional practices can seem daunting and nearly impossible to work into our busy and challenging lives. But what the Buddha taught — and what has been reinforced and highlighted in Shinnyo Buddhism — is simple: Use our daily lives as practice. One way to unlock blessings and joy — and to be able to share it — is to listen, not with our ears and minds, but with your hearts.</p>
-              <a href="#" class="btn">Listen Now</a>
-            </div>
-          </div>
-          
-          <div class="episode-card">
-            <div class="episode-img" style="background-image: url('/api/placeholder/350/200');"></div>
-            <div class="episode-content">
-              <h3>Finding Balance in Chaos</h3>
-              <div class="episode-meta">
-                <span><i class="fas fa-calendar"></i> April 15, 2023</span>
-                <span><i class="fas fa-clock"></i> 42 min</span>
-              </div>
-              <p>In this episode, we explore how to maintain inner peace and balance when the world around us feels chaotic and overwhelming. Drawing from Buddhist principles of mindfulness and presence, we discuss practical strategies for staying grounded in uncertain times.</p>
-              <a href="#" class="btn">Listen Now</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="blog" class="blog">
-      <div class="container">
-        <div class="section-title">
-          <h2>Blog & Resources</h2>
-          <p>Deepen your practice with our articles and resources</p>
-        </div>
-        
-        <div class="blog-grid">
-          <div class="blog-card">
-            <div class="blog-img" style="background-image: url('/api/placeholder/350/200');"></div>
-            <div class="blog-content">
-              <h3>5 Mindfulness Practices for Daily Life</h3>
-              <div class="episode-meta">
-                <span><i class="fas fa-calendar"></i> February 12, 2023</span>
-              </div>
-              <p>Simple techniques to incorporate mindfulness into your everyday routine, helping you stay present and engaged with each moment.</p>
-              <a href="#" class="btn">Read More</a>
-            </div>
-          </div>
-          
-          <div class="blog-card">
-            <div class="blog-img" style="background-image: url('/api/placeholder/350/200');"></div>
-            <div class="blog-content">
-              <h3>Understanding the Four Noble Truths</h3>
-              <div class="episode-meta">
-                <span><i class="fas fa-calendar"></i> January 25, 2023</span>
-              </div>
-              <p>A beginner-friendly exploration of the foundational Buddhist teachings of the Four Noble Truths and their relevance to modern life.</p>
-              <a href="#" class="btn">Read More</a>
-            </div>
-          </div>
-          
-          <div class="blog-card">
-            <div class="blog-img" style="background-image: url('/api/placeholder/350/200');"></div>
-            <div class="blog-content">
-              <h3>Meditation Guide for Beginners</h3>
-              <div class="episode-meta">
-                <span><i class="fas fa-calendar"></i> December 8, 2022</span>
-              </div>
-              <p>Start your meditation journey with this comprehensive guide for beginners, including different techniques and tips for establishing a consistent practice.</p>
-              <a href="#" class="btn">Read More</a>
+              <p>Buddhist concepts, doctrine and traditional practices can seem daunting and nearly impossible to work into our busy and challenging lives. But what the Buddha taught — and what has been reinforced and highlighted in Shinnyo Buddhism — is simple: Use our daily lives as practice. One way to unlock blessings and joy — and to be able to share it — is to listen, not with our ears and minds, but with your hearts. Join me as we dig into this and uncover how to use our hearts to create a better world around us.</p>
+              <a href="https://www.youtube.com/watch?v=mAHM2Oxq-A8&t=11s" class="btn">Listen Now</a>
             </div>
           </div>
         </div>
@@ -601,9 +454,9 @@
           </form>
           
           <div class="platforms">
-            <a href="#" class="platform-icon"><i class="fab fa-spotify"></i></a>
-            <a href="#" class="platform-icon"><i class="fab fa-apple"></i></a>
-            <a href="#" class="platform-icon"><i class="fab fa-youtube"></i></a>
+            <a href="https://open.spotify.com/show/4QjGSq8evGIkiKugmeh1Ld#login" class="platform-icon"><i class="fab fa-spotify"></i></a>
+            <a href="https://podcasts.apple.com/us/podcast/a-resonant-life/id1648636011" class="platform-icon"><i class="fab fa-apple"></i></a>
+            <a href="https://www.youtube.com/@AResonantLife" class="platform-icon"><i class="fab fa-youtube"></i></a>
           </div>
         </div>
       </div>
