@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Resonant Life Podcast</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #3D8D7A;
+      --secondary: #B3D8A8;
+      --accent: #205781;
+      --dark: #205781;
+      --light: #FBFFE4;
+      --text: #205781;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    body {
+      background-color: var(--light);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    header {
+      background-color: var(--primary);
+      padding: 1rem 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo-icon {
+      margin-right: 10px;
+      font-size: 2rem;
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+    
+    .nav-links li {
+      margin-left: 2rem;
+    }
+    
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+      color: var(--secondary);
+    }
+    
+    .active {
+      border-bottom: 2px solid var(--accent);
+    }
+    
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+    }
+    
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      background-image: linear-gradient(rgba(28, 37, 65, 0.8), rgba(28, 37, 65, 0.8)), url('/api/placeholder/1200/800');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding-top: 80px;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background-color: var(--accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .btn:hover {
+      background-color: #1a4766; /* Darker shade of --accent */
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    section {
+      padding: 5rem 0;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      position: relative;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+    
+    .section-title h2::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70px;
+      height: 3px;
+      background-color: var(--accent);
+    }
+    
+    .episodes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    
+    .episode-card {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .episode-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .episode-img {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .episode-content {
+      padding: 1.5rem;
+    }
+    
+    .episode-content h3 {
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+    
+    .episode-meta {
+      display: flex;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+    
+    .episode-meta span {
+      margin-right: 1rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .episode-meta i {
+      margin-right: 5px;
+    }
+    
+    .subscribe {
+      background-color: var(--light);
+      text-align: center;
+    }
+    
+    .subscribe-form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .form-group {
+      display: flex;
+      margin-bottom: 1rem;
+    }
+    
+    .form-group input {
+      flex: 1;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 30px 0 0 30px;
+      font-size: 1rem;
+    }
+    
+    .form-group button {
+      padding: 0 30px;
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 0 30px 30px 0;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    
+    .platforms {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .platform-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      transition: color 0.3s ease;
+    }
+    
+    .platform-icon:hover {
+      color: var(--secondary);
+    }
+    
+    footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 3rem 0 1rem;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .footer-column h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    
+    .footer-column h3::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background-color: var(--secondary);
+    }
+    
+    .footer-column ul {
+      list-style: none;
+    }
+    
+    .footer-column ul li {
+      margin-bottom: 0.8rem;
+    }
+    
+    .footer-column ul a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-column ul a:hover {
+      color: var(--secondary);
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+    
+    /* About Section */
+    #about {
+      background-color: white;
+    }
+    
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    
+    .about-image {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .about-text h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+    }
+    
+    /* Blog Section */
+    #blog {
+      background-color: var(--light);
+    }
+    
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    
+    .blog-card {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .blog-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .blog-img {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .blog-content {
+      padding: 1.5rem;
+    }
+    
+    .blog-content h3 {
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+    
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 1rem;
+      }
+      
+      .nav-links.show {
+        display: flex;
+      }
+      
+      .nav-links li {
+        margin: 0;
+        text-align: center;
+        padding: 0.5rem 0;
+      }
+      
+      .hamburger {
+        display: block;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+      }
+      
+      .hero {
+        height: auto;
+        padding: 120px 0 60px;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .about-content {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .episodes-grid, .blog-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <a href="#home" class="logo"><span class="logo-icon">🎙️</span> A Resonant Life</a>
+        <ul class="nav-links">
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#episodes">Episodes</a></li>
+          <li><a href="#blog">Blog & Resources</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="hamburger">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <div id="home">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Welcome to A Resonant Life!</h1>
+          <p>A Resonant Life is a Buddhist-centered life coaching podcast sharing experiences and insights on finding one's best path forward while uncovering one's authentic self.</p>
+          <a href="#episodes" class="btn">Listen Now</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>About the Podcast</h2>
+          <p>Discover the journey behind A Resonant Life</p>
+        </div>
+        
+        <div class="about-content">
+          <div class="about-image">
+            <img src="/api/placeholder/600/400" alt="About A Resonant Life" width="100%">
+          </div>
+          <div class="about-text">
+            <h3>Our Mission</h3>
+            <p>A Resonant Life podcast is dedicated to sharing Buddhist principles and life coaching insights to help you discover your authentic self and create a life that resonates with your true purpose.</p>
+            <p>Through thoughtful discussions, practical exercises, and deep explorations of Buddhist concepts, we aim to provide guidance for navigating life's challenges and finding joy in the present moment.</p>
+            <p>Join us on this journey of self-discovery and growth as we explore what it means to live a truly resonant life.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="episodes" class="latest-episodes">
+      <div class="container">
+        <div class="section-title">
+          <h2>Latest Episodes</h2>
+          <p>Discover our most recent explorations into living a resonant life</p>
+        </div>
+        
+        <div class="episodes-grid">
+          <div class="episode-card">
+            <div class="episode-img" style="background-image: url('/api/placeholder/350/200');"></div>
+            <div class="episode-content">
+              <h3>Revised Terms and Conditions of A Resonant Life</h3>
+              <div class="episode-meta">
+                <span><i class="fas fa-calendar"></i> June 10, 2023</span>
+                <span><i class="fas fa-clock"></i> 45 min</span>
+              </div>
+              <p>We've often underpinned a lot of our previous discussions and insights with the idea of embracing others without condition, without distinction. But what does that mean? Today we'll turn that stone over and try to better understand it as well as learn an exercise that will help us to rewire our hearts and brains to actually become better and engaging with others without condition or distinction.</p>
+              <a href="#" class="btn">Listen Now</a>
+            </div>
+          </div>
+          
+          <div class="episode-card">
+            <div class="episode-img" style="background-image: url('/api/placeholder/350/200');"></div>
+            <div class="episode-content">
+              <h3>Zip the Lip and Unzip the Heart</h3>
+              <div class="episode-meta">
+                <span><i class="fas fa-calendar"></i> May 20, 2023</span>
+                <span><i class="fas fa-clock"></i> 50 min</span>
+              </div>
+              <p>Buddhist concepts, doctrine and traditional practices can seem daunting and nearly impossible to work into our busy and challenging lives. But what the Buddha taught — and what has been reinforced and highlighted in Shinnyo Buddhism — is simple: Use our daily lives as practice. One way to unlock blessings and joy — and to be able to share it — is to listen, not with our ears and minds, but with your hearts.</p>
+              <a href="#" class="btn">Listen Now</a>
+            </div>
+          </div>
+          
+          <div class="episode-card">
+            <div class="episode-img" style="background-image: url('/api/placeholder/350/200');"></div>
+            <div class="episode-content">
+              <h3>Finding Balance in Chaos</h3>
+              <div class="episode-meta">
+                <span><i class="fas fa-calendar"></i> April 15, 2023</span>
+                <span><i class="fas fa-clock"></i> 42 min</span>
+              </div>
+              <p>In this episode, we explore how to maintain inner peace and balance when the world around us feels chaotic and overwhelming. Drawing from Buddhist principles of mindfulness and presence, we discuss practical strategies for staying grounded in uncertain times.</p>
+              <a href="#" class="btn">Listen Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="blog" class="blog">
+      <div class="container">
+        <div class="section-title">
+          <h2>Blog & Resources</h2>
+          <p>Deepen your practice with our articles and resources</p>
+        </div>
+        
+        <div class="blog-grid">
+          <div class="blog-card">
+            <div class="blog-img" style="background-image: url('/api/placeholder/350/200');"></div>
+            <div class="blog-content">
+              <h3>5 Mindfulness Practices for Daily Life</h3>
+              <div class="episode-meta">
+                <span><i class="fas fa-calendar"></i> February 12, 2023</span>
+              </div>
+              <p>Simple techniques to incorporate mindfulness into your everyday routine, helping you stay present and engaged with each moment.</p>
+              <a href="#" class="btn">Read More</a>
+            </div>
+          </div>
+          
+          <div class="blog-card">
+            <div class="blog-img" style="background-image: url('/api/placeholder/350/200');"></div>
+            <div class="blog-content">
+              <h3>Understanding the Four Noble Truths</h3>
+              <div class="episode-meta">
+                <span><i class="fas fa-calendar"></i> January 25, 2023</span>
+              </div>
+              <p>A beginner-friendly exploration of the foundational Buddhist teachings of the Four Noble Truths and their relevance to modern life.</p>
+              <a href="#" class="btn">Read More</a>
+            </div>
+          </div>
+          
+          <div class="blog-card">
+            <div class="blog-img" style="background-image: url('/api/placeholder/350/200');"></div>
+            <div class="blog-content">
+              <h3>Meditation Guide for Beginners</h3>
+              <div class="episode-meta">
+                <span><i class="fas fa-calendar"></i> December 8, 2022</span>
+              </div>
+              <p>Start your meditation journey with this comprehensive guide for beginners, including different techniques and tips for establishing a consistent practice.</p>
+              <a href="#" class="btn">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="subscribe">
+      <div class="container">
+        <div class="section-title">
+          <h2>Stay Connected</h2>
+          <p>Subscribe for updates and listen on your favorite platform</p>
+        </div>
+        
+        <div class="subscribe-form">
+          <form>
+            <div class="form-group">
+              <input type="email" placeholder="Your email address">
+              <button type="submit">Subscribe</button>
+            </div>
+          </form>
+          
+          <div class="platforms">
+            <a href="#" class="platform-icon"><i class="fab fa-spotify"></i></a>
+            <a href="#" class="platform-icon"><i class="fab fa-apple"></i></a>
+            <a href="#" class="platform-icon"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>A Resonant Life</h3>
+          <p>A Buddhist-centered podcast sharing insights on finding your authentic path.</p>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Navigation</h3>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#episodes">Episodes</a></li>
+            <li><a href="#blog">Blog & Resources</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Contact</h3>
+          <p>Email: professormikethompson@resonantlife.net</p>
+          <p>Follow us on social media</p>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        <p>© 2025 A Resonant Life Podcast. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
